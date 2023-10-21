@@ -7,7 +7,7 @@ packs <- c("dplyr","tidyverse","cluster","dendextend","factoextra","fpc",
              "gridExtra","readxl",'readr',"plotly","ggrepel","fastDummies","knitr","kableExtra",
              "splines","reshape2","PerformanceAnalytics","metan","correlation",
              "see","ggraph","nortest","car","olsrr","jtools","ggstance",
-             "magick","cowplot","beepr","Rcpp","rgl")
+             "magick","cowplot","beepr","Rcpp","rgl","GGally")
 
 if(sum(as.numeric(!packs %in% installed.packages())) != 0){
   installer <- packs[!packs %in% installed.packages()]
@@ -38,12 +38,10 @@ head(DF_MLR, 5)
 
 
 # Understanding the correlation among the attributes with the lines below
-# as Life is  the attribute to be understand, it's being removed from the 
-# correlation map which shows values above 0.5 to several attributes
+# as Life is the attribute to be understand, it's being removed from the 
+# correlation map, in which shows values above 0.5 to several attributes
 # which may indicate multicollinearity
 DF_MLR_Life <- DF_MLR[, -4]
-install.packages("GGally")
-library("GGally")
 ggcorr(DF_MLR_Life, label=T)
 
 cor(DF_MLR_Life, use = "all.obs",
@@ -54,11 +52,11 @@ DF_MLR_Life %>%
   correlation(method = "pearson",) %>%
   plot()
 
-cor(DF_MLR$Life, DF_OLS$Happiness) # = 0.7245871, multicollinearity?
-cor(DF_MLR$Water, DF_OLS$Happiness) # = 0.8128765, multicollinearity?
+cor(DF_MLR$Life, DF_MLR$Happiness) # = 0.7245871, multicollinearity?
+cor(DF_MLR$Water, DF_MLR$Happiness) # = 0.8128765, multicollinearity?
 
 #chart correlation
-chart.Correlation((DF_MLR), histogram = TRUE)
+chart.Correlation((DF_MLR_Life), histogram = TRUE)
 
 ##################################################################################
 #                       Multiple Linear Regression (MLR)                         #
@@ -96,5 +94,3 @@ sf.test(MLR_Life$residuals) # result p-value = 0.005673
 
 #Shapiro-Wilk Normality Test test not recommended to this dataset due to its size
 shapiro.test(MLR_Life$residuals) # result not considered p-value = 0.008021
-
-
