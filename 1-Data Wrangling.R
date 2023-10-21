@@ -86,5 +86,6 @@ df$HoursWorked <- as.numeric(df$HoursWorked)
 df$Water <- round(df$Water * 1.3, digits = 2)
 df$Gym <- round(df$Gym * 1.3, digits = 2)
 
+library(dplyr)
 head(df, 5)
 glimpse(df, 5)
