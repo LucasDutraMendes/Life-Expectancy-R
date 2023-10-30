@@ -15,7 +15,6 @@ if(sum(as.numeric(!packs %in% installed.packages())) != 0){
 } else {
   sapply(packs, require, character = T) 
 }
-
 ##################################################################################
 #                                  PCA                                           #
 ##################################################################################
@@ -140,7 +139,7 @@ F4 <- data.frame(F4) %>%
 DF_PCA["Daily_Overload"] <- F1$fator1
 DF_PCA["Leisure"] <- F2$fator2
 DF_PCA["Sedentarism"] <- F3$fator3
-DF_PCA["Healthy Habits"] <- F4$fator4
+DF_PCA["HealthyHabits"] <- F4$fator4
 
 shared_variance <- (afpc$sdev ^ 2/sum(afpc$sdev ^ 2))
 
