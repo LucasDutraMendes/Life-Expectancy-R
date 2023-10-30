@@ -1,5 +1,5 @@
 
-df <- read.csv("healthy lifestyle city 2021.csv")
+df <- read.csv("0-healthy lifestyle city 2021.csv")
 
 #Changing the attributes names
 
@@ -83,8 +83,8 @@ df$Obesity <- as.numeric(df$Obesity)
 df$HoursWorked <- as.numeric(df$HoursWorked)
 
 #changing from Pound to US Dollar  
-df$Water <- round(df$Water * 1.3, digits = 2)
-df$Gym <- round(df$Gym * 1.3, digits = 2)
+df$Water <- round(df$Water * 1.15, digits = 2)
+df$Gym <- round(df$Gym * 1.15, digits = 2)
 
 library(dplyr)
 head(df, 5)
