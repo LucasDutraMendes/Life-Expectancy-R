@@ -1,8 +1,7 @@
-
 ##################################################################################
 #                              NONLINEAR REGRESSION BOX-COX                      #
 ##################################################################################
-NONLINEAR REGRESSION BOX-COX 
+
 # Lambda Box-Cox using bcPower also can use -> "yjPower bcnPower"
 lambda_BC <- powerTransform(DF_MLR$Life,family="bcPower") # powerTransform package car#
 lambda_BC # result 11.72205 
@@ -26,4 +25,3 @@ summary(MLR_BC_Life) # insignificant improvement in the adjusted R²,
 #Shapiro-Francia test
 sf.test(MLR_BC_Life$residuals) #Excellent result after Box-Cox transformation
 # p-value = 0.6947 
-
