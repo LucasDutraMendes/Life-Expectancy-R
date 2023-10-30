@@ -40,7 +40,7 @@ head(DF_MLR, 5)
 # Understanding the correlation among the attributes with the lines below
 # as Life is the attribute to be understand, it's being removed from the 
 # correlation map, in which shows values above 0.5 to several attributes
-# which may indicate multicollinearity
+# which may indicate Collinearity
 DF_MLR_Life <- DF_MLR[, -4]
 ggcorr(DF_MLR_Life, label=T)
 
@@ -52,8 +52,8 @@ DF_MLR_Life %>%
   correlation(method = "pearson",) %>%
   plot()
 
-cor(DF_MLR$Life, DF_MLR$Happiness) # = 0.7245871, multicollinearity?
-cor(DF_MLR$Water, DF_MLR$Happiness) # = 0.8128765, multicollinearity?
+cor(DF_MLR$Life, DF_MLR$Happiness) # = 0.7245871, Collinearity?
+cor(DF_MLR$Water, DF_MLR$Happiness) # = 0.8128765, Collinearity?
 
 #chart correlation
 chart.Correlation((DF_MLR_Life), histogram = TRUE)
@@ -94,3 +94,4 @@ sf.test(MLR_Life$residuals) # result p-value = 0.005673
 
 #Shapiro-Wilk Normality Test test not recommended to this dataset due to its size
 shapiro.test(MLR_Life$residuals) # result not considered p-value = 0.008021
+
